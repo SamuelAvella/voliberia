@@ -863,13 +863,13 @@ export interface ApiUserAppUserApp extends Schema.CollectionType {
     email: Attribute.Email;
     password: Attribute.Password;
     idDocument: Attribute.String;
-    phoneNumber: Attribute.BigInteger;
     birthDate: Attribute.Date;
     bookings: Attribute.Relation<
       'api::user-app.user-app',
       'oneToMany',
       'api::booking.booking'
     >;
+    phoneNumber: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

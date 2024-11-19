@@ -27,9 +27,6 @@
     "idDocument": {
       "type": "string"
     },
-    "phoneNumber": {
-      "type": "biginteger"
-    },
     "birthDate": {
       "type": "date"
     },
@@ -38,6 +35,9 @@
       "relation": "oneToMany",
       "target": "api::booking.booking",
       "mappedBy": "user_app"
+    },
+    "phoneNumber": {
+      "type": "string"
     }
   }
 }
