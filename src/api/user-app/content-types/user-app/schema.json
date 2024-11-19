@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_apps",
+  "info": {
+    "singularName": "user-app",
+    "pluralName": "user-apps",
+    "displayName": "UserApp",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "password": {
+      "type": "password"
+    },
+    "idDocument": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "biginteger"
+    },
+    "birthDate": {
+      "type": "date"
+    },
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "user_app"
+    }
+  }
+}

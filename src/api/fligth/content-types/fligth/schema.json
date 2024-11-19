@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fligths",
+  "info": {
+    "singularName": "fligth",
+    "pluralName": "fligths",
+    "displayName": "Fligth",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "origin": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "departureDate": {
+      "type": "datetime"
+    },
+    "arrivalDate": {
+      "type": "datetime"
+    },
+    "seatPrice": {
+      "type": "decimal"
+    },
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "fligth"
+    },
+    "seats": {
+      "type": "json"
+    }
+  }
+}
