@@ -71,6 +71,12 @@
       "relation": "oneToOne",
       "target": "api::person.person",
       "mappedBy": "user"
+    },
+    "user_app": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-app.user-app",
+      "mappedBy": "user"
     }
   }
 }

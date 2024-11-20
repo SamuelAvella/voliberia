@@ -665,6 +665,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'api::person.person'
     >;
+    user_app: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::user-app.user-app'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -860,8 +865,6 @@ export interface ApiUserAppUserApp extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     surname: Attribute.String;
-    email: Attribute.Email;
-    password: Attribute.Password;
     idDocument: Attribute.String;
     birthDate: Attribute.Date;
     bookings: Attribute.Relation<
@@ -870,6 +873,11 @@ export interface ApiUserAppUserApp extends Schema.CollectionType {
       'api::booking.booking'
     >;
     phoneNumber: Attribute.String;
+    user: Attribute.Relation<
+      'api::user-app.user-app',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
