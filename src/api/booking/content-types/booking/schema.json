@@ -15,12 +15,6 @@
     "bookingState": {
       "type": "boolean"
     },
-    "seats": {
-      "type": "json"
-    },
-    "totalPrice": {
-      "type": "decimal"
-    },
     "user_app": {
       "type": "relation",
       "relation": "manyToOne",
@@ -32,6 +26,12 @@
       "relation": "manyToOne",
       "target": "api::fligth.fligth",
       "inversedBy": "bookings"
+    },
+    "seats": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::seat.seat",
+      "mappedBy": "booking"
     }
   }
 }

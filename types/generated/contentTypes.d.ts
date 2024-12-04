@@ -700,8 +700,6 @@ export interface ApiBookingBooking extends Schema.CollectionType {
   };
   attributes: {
     bookingState: Attribute.Boolean;
-    seats: Attribute.JSON;
-    totalPrice: Attribute.Decimal;
     user_app: Attribute.Relation<
       'api::booking.booking',
       'manyToOne',
@@ -711,6 +709,11 @@ export interface ApiBookingBooking extends Schema.CollectionType {
       'api::booking.booking',
       'manyToOne',
       'api::fligth.fligth'
+    >;
+    seats: Attribute.Relation<
+      'api::booking.booking',
+      'oneToMany',
+      'api::seat.seat'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -752,7 +755,11 @@ export interface ApiFligthFligth extends Schema.CollectionType {
       'oneToMany',
       'api::booking.booking'
     >;
-    seats: Attribute.JSON;
+    seats: Attribute.Relation<
+      'api::fligth.fligth',
+      'oneToMany',
+      'api::seat.seat'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -851,6 +858,40 @@ export interface ApiPersonPerson extends Schema.CollectionType {
   };
 }
 
+export interface ApiSeatSeat extends Schema.CollectionType {
+  collectionName: 'seats';
+  info: {
+    singularName: 'seat';
+    pluralName: 'seats';
+    displayName: 'Seats';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    number: Attribute.String;
+    reserved: Attribute.Boolean;
+    fligth: Attribute.Relation<
+      'api::seat.seat',
+      'manyToOne',
+      'api::fligth.fligth'
+    >;
+    booking: Attribute.Relation<
+      'api::seat.seat',
+      'manyToOne',
+      'api::booking.booking'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::seat.seat', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::seat.seat', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiUserAppUserApp extends Schema.CollectionType {
   collectionName: 'user_apps';
   info: {
@@ -872,12 +913,12 @@ export interface ApiUserAppUserApp extends Schema.CollectionType {
       'oneToMany',
       'api::booking.booking'
     >;
-    phoneNumber: Attribute.String;
     user: Attribute.Relation<
       'api::user-app.user-app',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    picture: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -916,6 +957,7 @@ declare module '@strapi/types' {
       'api::fligth.fligth': ApiFligthFligth;
       'api::group.group': ApiGroupGroup;
       'api::person.person': ApiPersonPerson;
+      'api::seat.seat': ApiSeatSeat;
       'api::user-app.user-app': ApiUserAppUserApp;
     }
   }

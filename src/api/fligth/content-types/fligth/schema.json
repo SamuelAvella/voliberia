@@ -34,7 +34,10 @@
       "mappedBy": "fligth"
     },
     "seats": {
-      "type": "json"
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::seat.seat",
+      "mappedBy": "fligth"
     }
   }
 }
