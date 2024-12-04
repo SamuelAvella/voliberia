@@ -738,7 +738,7 @@ export interface ApiFligthFligth extends Schema.CollectionType {
   info: {
     singularName: 'fligth';
     pluralName: 'fligths';
-    displayName: 'Fligth';
+    displayName: 'Flight';
     description: '';
   };
   options: {
