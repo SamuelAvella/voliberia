@@ -4,7 +4,11 @@
   "info": {
     "singularName": "seat",
     "pluralName": "seats",
+<<<<<<< HEAD
     "displayName": "Seat",
+=======
+    "displayName": "Seats",
+>>>>>>> be059577c4bdbe4f03a19028e2bd81022d4cb10e
     "description": ""
   },
   "options": {
@@ -12,7 +16,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+<<<<<<< HEAD
     "identifier": {
+=======
+    "number": {
+>>>>>>> be059577c4bdbe4f03a19028e2bd81022d4cb10e
       "type": "string"
     },
     "reserved": {
@@ -26,8 +34,14 @@
     },
     "booking": {
       "type": "relation",
+<<<<<<< HEAD
       "relation": "oneToOne",
       "target": "api::booking.booking"
+=======
+      "relation": "manyToOne",
+      "target": "api::booking.booking",
+      "inversedBy": "seats"
+>>>>>>> be059577c4bdbe4f03a19028e2bd81022d4cb10e
     }
   }
 }

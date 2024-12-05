@@ -734,7 +734,7 @@ export interface ApiFligthFligth extends Schema.CollectionType {
   info: {
     singularName: 'fligth';
     pluralName: 'fligths';
-    displayName: 'Fligth';
+    displayName: 'Flight';
     description: '';
   };
   options: {
@@ -829,12 +829,12 @@ export interface ApiUserAppUserApp extends Schema.CollectionType {
       'oneToMany',
       'api::booking.booking'
     >;
-    phoneNumber: Attribute.String;
     user: Attribute.Relation<
       'api::user-app.user-app',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    picture: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
