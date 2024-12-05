@@ -3,7 +3,7 @@
   "collectionName": "user_apps",
   "info": {
     "singularName": "user-app",
-    "pluralName": "users-app",
+    "pluralName": "user-apps",
     "displayName": "UserApp",
     "description": ""
   },
