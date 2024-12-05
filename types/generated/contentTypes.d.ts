@@ -695,7 +695,6 @@ export interface ApiBookingBooking extends Schema.CollectionType {
   };
   attributes: {
     bookingState: Attribute.Boolean;
-    totalPrice: Attribute.Decimal;
     user_app: Attribute.Relation<
       'api::booking.booking',
       'manyToOne',
@@ -786,7 +785,7 @@ export interface ApiSeatSeat extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    identifier: Attribute.String;
+    number: Attribute.String;
     reserved: Attribute.Boolean;
     fligth: Attribute.Relation<
       'api::seat.seat',
@@ -795,7 +794,7 @@ export interface ApiSeatSeat extends Schema.CollectionType {
     >;
     booking: Attribute.Relation<
       'api::seat.seat',
-      'oneToOne',
+      'manyToOne',
       'api::booking.booking'
     >;
     createdAt: Attribute.DateTime;
