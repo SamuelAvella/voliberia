@@ -66,12 +66,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "person": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::person.person",
-      "mappedBy": "user"
-    },
     "user_app": {
       "type": "relation",
       "relation": "oneToOne",

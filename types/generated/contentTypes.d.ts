@@ -660,11 +660,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    person: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::person.person'
-    >;
     user_app: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',
@@ -700,7 +695,6 @@ export interface ApiBookingBooking extends Schema.CollectionType {
   };
   attributes: {
     bookingState: Attribute.Boolean;
-    seats: Attribute.JSON;
     totalPrice: Attribute.Decimal;
     user_app: Attribute.Relation<
       'api::booking.booking',
@@ -711,6 +705,11 @@ export interface ApiBookingBooking extends Schema.CollectionType {
       'api::booking.booking',
       'manyToOne',
       'api::fligth.fligth'
+    >;
+    seats: Attribute.Relation<
+      'api::booking.booking',
+      'oneToMany',
+      'api::seat.seat'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -752,54 +751,22 @@ export interface ApiFligthFligth extends Schema.CollectionType {
       'oneToMany',
       'api::booking.booking'
     >;
-    seats: Attribute.JSON;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
+    seats: Attribute.Relation<
       'api::fligth.fligth',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::fligth.fligth',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiGroupGroup extends Schema.CollectionType {
-  collectionName: 'groups';
-  info: {
-    singularName: 'group';
-    pluralName: 'groups';
-    displayName: 'Group';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    people: Attribute.Relation<
-      'api::group.group',
       'oneToMany',
-      'api::person.person'
+      'api::seat.seat'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::group.group',
+      'api::fligth.fligth',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::group.group',
+      'api::fligth.fligth',
       'oneToOne',
       'admin::user'
     > &
@@ -807,46 +774,36 @@ export interface ApiGroupGroup extends Schema.CollectionType {
   };
 }
 
-export interface ApiPersonPerson extends Schema.CollectionType {
-  collectionName: 'people';
+export interface ApiSeatSeat extends Schema.CollectionType {
+  collectionName: 'seats';
   info: {
-    singularName: 'person';
-    pluralName: 'people';
-    displayName: 'Person';
+    singularName: 'seat';
+    pluralName: 'seats';
+    displayName: 'Seat';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    surname: Attribute.String;
-    gender: Attribute.String;
-    birthDate: Attribute.Date;
-    group: Attribute.Relation<
-      'api::person.person',
+    identifier: Attribute.String;
+    reserved: Attribute.Boolean;
+    fligth: Attribute.Relation<
+      'api::seat.seat',
       'manyToOne',
-      'api::group.group'
+      'api::fligth.fligth'
     >;
-    user: Attribute.Relation<
-      'api::person.person',
+    booking: Attribute.Relation<
+      'api::seat.seat',
       'oneToOne',
-      'plugin::users-permissions.user'
+      'api::booking.booking'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::seat.seat', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::seat.seat', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -914,8 +871,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::booking.booking': ApiBookingBooking;
       'api::fligth.fligth': ApiFligthFligth;
-      'api::group.group': ApiGroupGroup;
-      'api::person.person': ApiPersonPerson;
+      'api::seat.seat': ApiSeatSeat;
       'api::user-app.user-app': ApiUserAppUserApp;
     }
   }
