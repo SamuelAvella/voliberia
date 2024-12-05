@@ -15,12 +15,6 @@
     "bookingState": {
       "type": "boolean"
     },
-<<<<<<< HEAD
-    "totalPrice": {
-      "type": "decimal"
-    },
-=======
->>>>>>> be059577c4bdbe4f03a19028e2bd81022d4cb10e
     "user_app": {
       "type": "relation",
       "relation": "manyToOne",
@@ -36,12 +30,8 @@
     "seats": {
       "type": "relation",
       "relation": "oneToMany",
-<<<<<<< HEAD
-      "target": "api::seat.seat"
-=======
       "target": "api::seat.seat",
       "mappedBy": "booking"
->>>>>>> be059577c4bdbe4f03a19028e2bd81022d4cb10e
     }
   }
 }
