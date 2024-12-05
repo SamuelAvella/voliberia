@@ -2,8 +2,8 @@
   "kind": "collectionType",
   "collectionName": "fligths",
   "info": {
-    "singularName": "fligth",
-    "pluralName": "fligths",
+    "singularName": "flight",
+    "pluralName": "flights",
     "displayName": "Flight",
     "description": ""
   },

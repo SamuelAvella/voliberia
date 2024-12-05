@@ -811,7 +811,7 @@ export interface ApiUserAppUserApp extends Schema.CollectionType {
   collectionName: 'user_apps';
   info: {
     singularName: 'user-app';
-    pluralName: 'user-apps';
+    pluralName: 'users-app';
     displayName: 'UserApp';
     description: '';
   };
