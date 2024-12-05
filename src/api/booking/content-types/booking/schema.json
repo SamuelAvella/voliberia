@@ -21,17 +21,17 @@
       "target": "api::user-app.user-app",
       "inversedBy": "bookings"
     },
-    "fligth": {
+    "flight": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::fligth.fligth",
       "inversedBy": "bookings"
     },
-    "seats": {
+    "seat": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::seat.seat",
-      "mappedBy": "booking"
+      "inversedBy": "booking"
     }
   }
 }

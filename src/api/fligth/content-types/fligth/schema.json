@@ -27,17 +27,17 @@
     "seatPrice": {
       "type": "decimal"
     },
-    "bookings": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::booking.booking",
-      "mappedBy": "fligth"
-    },
     "seats": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::seat.seat",
-      "mappedBy": "fligth"
+      "mappedBy": "flight"
+    },
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "flight"
     }
   }
 }

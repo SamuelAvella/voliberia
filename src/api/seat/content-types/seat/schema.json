@@ -12,13 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "number": { 
+    "number": {
       "type": "string"
     },
     "reserved": {
       "type": "boolean"
     },
-    "fligth": {
+    "flight": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::fligth.fligth",
@@ -26,9 +26,9 @@
     },
     "booking": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::booking.booking",
-      "inversedBy": "seats"
+      "mappedBy": "seat"
     }
   }
 }
