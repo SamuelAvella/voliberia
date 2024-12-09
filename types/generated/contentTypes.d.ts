@@ -705,11 +705,6 @@ export interface ApiBookingBooking extends Schema.CollectionType {
       'manyToOne',
       'api::fligth.fligth'
     >;
-    seat: Attribute.Relation<
-      'api::booking.booking',
-      'oneToOne',
-      'api::seat.seat'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -745,11 +740,6 @@ export interface ApiFligthFligth extends Schema.CollectionType {
     departureDate: Attribute.DateTime;
     arrivalDate: Attribute.DateTime;
     seatPrice: Attribute.Decimal;
-    seats: Attribute.Relation<
-      'api::fligth.fligth',
-      'oneToMany',
-      'api::seat.seat'
-    >;
     bookings: Attribute.Relation<
       'api::fligth.fligth',
       'oneToMany',
@@ -787,16 +777,6 @@ export interface ApiSeatSeat extends Schema.CollectionType {
   attributes: {
     number: Attribute.String;
     reserved: Attribute.Boolean;
-    flight: Attribute.Relation<
-      'api::seat.seat',
-      'manyToOne',
-      'api::fligth.fligth'
-    >;
-    booking: Attribute.Relation<
-      'api::seat.seat',
-      'oneToOne',
-      'api::booking.booking'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -17,18 +17,6 @@
     },
     "reserved": {
       "type": "boolean"
-    },
-    "flight": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::fligth.fligth",
-      "inversedBy": "seats"
-    },
-    "booking": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::booking.booking",
-      "mappedBy": "seat"
     }
   }
 }

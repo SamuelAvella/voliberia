@@ -27,12 +27,6 @@
     "seatPrice": {
       "type": "decimal"
     },
-    "seats": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::seat.seat",
-      "mappedBy": "flight"
-    },
     "bookings": {
       "type": "relation",
       "relation": "oneToMany",

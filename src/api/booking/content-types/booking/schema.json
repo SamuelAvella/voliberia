@@ -26,12 +26,6 @@
       "relation": "manyToOne",
       "target": "api::fligth.fligth",
       "inversedBy": "bookings"
-    },
-    "seat": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::seat.seat",
-      "inversedBy": "booking"
     }
   }
 }
